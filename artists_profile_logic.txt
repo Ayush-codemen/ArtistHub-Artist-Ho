@@ -1,0 +1,54 @@
+// Imports for DB
+import connectDB from '@/lib/connect-db'
+import User from '@/lib/models/User'
+import Portfolio from '@/lib/models/Portfolio'
+import { notFound } from 'next/navigation'
+
+export default async function ArtistProfile({ params }: { params: { id: string } }) {
+  await connectDB()
+  
+  const { id } = params
+  
+  let user: any = null
+  try {
+     user = await User.findById(id).lean()
+  } catch (e) {
+     return (
+       <div className="min-h-screen bg-black text-white p-8">Invalid Artist ID</div>
+     )
+  }
+
+  if (!user || user.role !== 'artist') {
+     return (
+        <div className="min-h-screen bg-black text-white p-8">Artist not found</div>
+     )
+  }
+
+  const userPortfolio = await Portfolio.find({ user: user._id }).lean()
+  
+  const artist = {
+    id: user._id.toString(),
+    name: user.name,
+    category: user.skills?.[0] || 'Artist',
+    bio: user.bio || 'No bio available.',
+    avatar: user.avatar || "/placeholder.svg",
+    coverImage: "/placeholder.svg?height=400&width=600",
+    available: true,
+    skills: user.skills || [],
+    hourlyRate: 50 + Math.floor(Math.random() * 50),
+    rating: 4.8,
+    reviews: 12,
+    location: user.location || 'Remote',
+    portfolio: userPortfolio.map((p: any) => ({
+      title: p.title,
+      description: p.description,
+      image: p.imageUrl || "/placeholder.svg",
+      tags: p.tags || []
+    })),
+    socialLinks: {
+      website: user.website || "#",
+      instagram: "#",
+      twitter: "#",
+      youtube: "#"
+    }
+  }

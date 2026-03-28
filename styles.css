@@ -1,0 +1,244 @@
+:root {
+  --primary-color: #6c5ce7;
+  --secondary-color: #a29bfe;
+  --text-color: #2d3436;
+  --light-gray: #dfe6e9;
+  --dark-gray: #636e72;
+  --success-color: #00b894;
+  --white: #ffffff;
+  --shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  --border-radius: 8px;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  line-height: 1.6;
+  color: var(--text-color);
+  background-color: #f9f9f9;
+}
+
+.container {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+/* Profile Header */
+.profile-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 30px;
+  padding-bottom: 20px;
+  border-bottom: 1px solid var(--light-gray);
+}
+
+.profile-info {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+.profile-picture {
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 3px solid var(--primary-color);
+}
+
+.profile-type {
+  color: var(--dark-gray);
+  margin-bottom: 5px;
+}
+
+.average-rating {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-top: 5px;
+}
+
+.stars {
+  color: #f1c40f;
+}
+
+.rating-value {
+  font-weight: bold;
+}
+
+.review-count {
+  color: var(--dark-gray);
+}
+
+.back-button {
+  display: inline-block;
+  padding: 8px 16px;
+  background-color: var(--white);
+  color: var(--primary-color);
+  text-decoration: none;
+  border-radius: var(--border-radius);
+  border: 1px solid var(--primary-color);
+  transition: all 0.3s ease;
+}
+
+.back-button:hover {
+  background-color: var(--primary-color);
+  color: var(--white);
+}
+
+/* Review Form */
+.review-form-section {
+  background-color: var(--white);
+  padding: 25px;
+  border-radius: var(--border-radius);
+  box-shadow: var(--shadow);
+  margin-bottom: 30px;
+}
+
+.review-form-section h2 {
+  margin-bottom: 20px;
+  color: var(--primary-color);
+}
+
+.form-group {
+  margin-bottom: 20px;
+}
+
+label {
+  display: block;
+  margin-bottom: 8px;
+  font-weight: 500;
+}
+
+input[type="text"],
+textarea {
+  width: 100%;
+  padding: 12px;
+  border: 1px solid var(--light-gray);
+  border-radius: var(--border-radius);
+  font-size: 16px;
+  transition: border 0.3s ease;
+}
+
+input[type="text"]:focus,
+textarea:focus {
+  border-color: var(--primary-color);
+  outline: none;
+}
+
+.star-rating {
+  display: flex;
+  gap: 10px;
+  font-size: 24px;
+  cursor: pointer;
+}
+
+.star-rating i {
+  color: #ddd;
+  transition: color 0.2s ease;
+}
+
+.star-rating i.fas {
+  color: #f1c40f;
+}
+
+.submit-button {
+  background-color: var(--primary-color);
+  color: var(--white);
+  border: none;
+  padding: 12px 24px;
+  border-radius: var(--border-radius);
+  font-size: 16px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.submit-button:hover {
+  background-color: #5549d6;
+}
+
+/* Reviews Section */
+.reviews-section {
+  background-color: var(--white);
+  padding: 25px;
+  border-radius: var(--border-radius);
+  box-shadow: var(--shadow);
+}
+
+.reviews-section h2 {
+  margin-bottom: 20px;
+  color: var(--primary-color);
+}
+
+.review-card {
+  padding: 20px;
+  border-bottom: 1px solid var(--light-gray);
+  margin-bottom: 20px;
+}
+
+.review-card:last-child {
+  border-bottom: none;
+  margin-bottom: 0;
+}
+
+.review-header {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 10px;
+}
+
+.reviewer-name {
+  font-weight: 600;
+  font-size: 18px;
+}
+
+.review-date {
+  color: var(--dark-gray);
+  font-size: 14px;
+}
+
+.review-rating {
+  margin-bottom: 10px;
+  color: #f1c40f;
+}
+
+.review-content {
+  line-height: 1.6;
+}
+
+.no-reviews {
+  text-align: center;
+  color: var(--dark-gray);
+  padding: 20px;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .profile-header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 20px;
+  }
+
+  .back-button {
+    align-self: flex-start;
+  }
+}
+
+@media (max-width: 480px) {
+  .profile-info {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .star-rating {
+    font-size: 20px;
+  }
+}
